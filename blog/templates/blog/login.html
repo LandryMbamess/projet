@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block div %}
+
+<div class="col-lg-12">
+    <hr>
+        <h2 class="intro-text text-center">
+                login
+        </h2>
+    <hr>
+</div>
+{% if form.errors %}
+<p>Votre nom d'utilisation ou le mot de passe pas correct. réessayez </p>
+{% endif %}
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Vous êtes déjà connecté</p>
+    {% else %}
+    <p>en cas de connexion </p>
+    {% endif %}
+{% endif %}
+
+<form action="{% url 'blog:login' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="se connecter" class="btn btn-default btn-lg">
+</form>
+{% endblock %}
