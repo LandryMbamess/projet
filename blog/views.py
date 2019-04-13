@@ -4,7 +4,7 @@ from .models import *
 from .forms import *
 from datetime import datetime
 from django.contrib.auth import authenticate, login, logout
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.urls import reverse_lazy
@@ -57,6 +57,12 @@ def newArticle(request):
 		form.save()
 		return redirect('blog:detailArticle', form.id)
 	return render(request, "blog/new_article.html", locals())
+
+class delArt(DeleteView):
+	template_name = 'blog/delArt.html'
+	context_object_name = 'article'
+	model = Article
+	success_url = reverse_lazy('blog:blog')
 
 #class newArticle(CreateView):
 #	model = Article

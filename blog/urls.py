@@ -14,6 +14,7 @@ urlpatterns = [
 	path('newArticle/', views.newArticle, name ='newArticle'),
 	path('<int:pk>/newCom/', views.newCom, name ='newCom'),
 	path('editCom/<int:pk>/', views.editCom, name ='editCom'),
+	path('<int:pk>/del/', views.delArt.as_view(), name='delete'),
 	path('inscription/', views.inscription.as_view(), name = 'inscription'),
 	path('login/', auth_views.login, {'template_name':'blog/login.html'}, name = 'login'),
 	path('logout/', auth_views.logout, {'next_page':'/'}, name='logout'),
