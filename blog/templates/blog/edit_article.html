@@ -12,7 +12,7 @@
 
 <form action="{% url 'blog:editArticle' %}" method="POST">
     {% csrf_token %}
-    {{forms.as_p}}
+    {{form.as_p}}
     <input type="submit" value="valider">
 </form>
 {% endblock %}

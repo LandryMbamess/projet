@@ -82,16 +82,16 @@ class editArticle(UpdateView):
 	form_class = ArticleForm
 	success_url = reverse_lazy('blog:blog')
 
-#@login_required(login_url = 'blog:login')
-def newCom(request, article_id):
-	article = Article.objecs.get(pk=article_id)
+@login_required(login_url = 'blog:login')
+def newCom(request, pk):
+	article = Article.objects.get(pk=pk)
 	forms = comForm(request.POST or None)
 	if forms.is_valid():
 		forms = forms.save(commit=False)
 		forms.auteur = request.user
 		forms.article = article
 		forms.save()
-		return redirect('detailArticle', article_id=article_id)
+		return redirect('blog:detailArticle', pk)
 	return render(request, "blog/editer_commentaire.html", locals())
 
 @login_required(login_url = 'blog:login')
