@@ -10,14 +10,14 @@
 
     {% for article in articles %}
 
-        <div class="col-sm-12 text-center">
+        <div class="col-sm-6 text-center">
             <hr>
             <h2>{{article.titre}}
 
                 <br>
                 <small>{{article.date}}</small>
             </h2>
-            <p>{{article.contenu|truncatewords:80}}</p>
+            <p>{{article.contenu|truncatewords:60}}</p>
             <a href="{% url 'blog:detailArticle' article.id %}" class="btn btn-default btn-lg">Lire l'article</a>
         </div>
         {% if forloop.counter|divisibleby:2 %}<h3 class="clearfix"></h3>{% endif %}

@@ -23,5 +23,6 @@ urlpatterns = [
     path('',TemplateView.as_view(template_name='blog/index.html'), name ='home'),
 	path('blog/',include('blog.urls')),
     path('admin/', admin.site.urls),
+    path('blog/comments/', include('django_comments.urls')),
 ]
 

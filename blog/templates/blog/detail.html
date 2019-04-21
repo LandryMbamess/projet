@@ -9,7 +9,9 @@
             </h2>
             <p>{{article.contenu|linebreaksbr}}</p>
     <a href="{% url 'blog:editArticle' article.id %}" class="btn btn-default btn-lg">editer l'article</a>
+     <a href="{% url 'blog:delete' article.id %}" class="btn btn-default btn-lg">supprimer l'article</a>
 
 </div>
+
 
 {% endblock %}

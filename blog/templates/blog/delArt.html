@@ -9,9 +9,9 @@
     <hr>
 </div>
 <h2>Etes vous sur de vouloir supprimer l'article????</h2>
-<p></p>
+<p>{{article.titre}} de {{article.auteur.username}}</p>
 <form action="" method="POST">
     {% csrf_token %}
-    <input type="submit" value="supprimer"> <a href="{% url 'blog:detailArticle' article.id %}"> ne pas supprimer</a>
+    <input type="submit" value="supprimer" class="btn btn-default btn-lg"> <a href="{% url 'blog:detailArticle' article.id %}" class="btn btn-default btn-lg"> ne pas supprimer</a>
 </form>
 {% endblock %}

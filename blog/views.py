@@ -64,52 +64,23 @@ class delArt(DeleteView):
 	model = Article
 	success_url = reverse_lazy('blog:blog')
 
-#class newArticle(CreateView):
-#	model = Article
-#	template_name='blog/new_article.html'
-#	form_class = ArticleForm
-#	success_url = reverse_lazy(listing)
-
-
 #@login_required(login_url = 'blog:login')
-#def editArticle(request, article_id):
-#	article = get_object_or_404(Article, pk=article_id)
-#	forms = ArticleForm(request.POST, instance = article)
-#	if forms.is_valid():
-#		forms=forms.save(commit=False)
-#		forms.date = datetime.now()
-#		forms.save()
-#		return redirect('blog:detailArticle', article_id)
-#	return render(request, "blog/edit_article.html", locals())
-
 class editArticle(UpdateView):
-	template_name = 'blog/edit_article.html'
+	template_name = 'blog/new_article.html'
 	model = Article
 	form_class = ArticleForm
 	success_url = reverse_lazy('blog:blog')
 
 @login_required(login_url = 'blog:login')
 def newCom(request, pk):
-	article = Article.objects.get(pk=pk)
 	forms = comForm(request.POST or None)
 	if forms.is_valid():
 		forms = forms.save(commit=False)
 		forms.auteur = request.user
-		forms.article = article
+		forms.article = Article.objects.get(pk=pk)
 		forms.save()
 		return redirect('blog:detailArticle', pk)
-	return render(request, "blog/editer_commentaire.html", locals())
-
-@login_required(login_url = 'blog:login')
-def editCom(request, com_id):
-	com = get_object_or_404(Commentaire, pk=com_id)
-	forms = comForm(request.POST, instance=com)
-	if forms.is_valid():
-		forms=forms.save(commit=False)
-		froms.date = datetime.now()
-		forms.save()
-		return redirect('detailArticle', article_id=forms.id)
-	return render(request, "blog/editer_commentaire.html")
+	return render(request, "blog/detail.html", locals())
 
 #@login_required(login_url = 'blog:login')
 #def ajoutCat(request):
