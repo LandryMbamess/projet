@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import fluent_comments.urls
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
@@ -23,6 +24,6 @@ urlpatterns = [
     path('',TemplateView.as_view(template_name='blog/index.html'), name ='home'),
 	path('blog/',include('blog.urls')),
     path('admin/', admin.site.urls),
-    path('blog/comments/', include('django_comments.urls')),
+    path('blog/comments/', include(fluent_comments.urls)),
 ]
 

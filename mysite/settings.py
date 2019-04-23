@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,7 +43,10 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_comments',
     'django.contrib.sites',
+    'threadedcomments',
+    'gravatar',
 ]
+
 
 #CRISPY_TEMPLATE_PACK ='bootstrap3'
 #COMMENTS_APP = 'comments'
@@ -125,7 +129,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+SITE_ID = 1
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
@@ -133,3 +137,17 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+# inclusion des fichier pour fluent_comment
+COMMENTS_APP = 'fluent_comments'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#FLUENT_COMMENTS_FORM_CLASS = 'fluent_comments.forms.default'
+
+FLUENT_COMMENTS_USE_EMAIL_MODERATION = True
+FLUENT_COMMENTS_MODERATE_AFTER_DAYS = 14
+FLUENT_COMMENTS_CLOSE_AFTER_DAYS = 60
+FLUENT_COMMENTS_AKISMET_ACTION = 'moderate'
+
+AKISMET_API_KEY = None  # Add your Akismet key here to enable Akismet support
+AKISMET_IS_TEST = True  # for development/example apps.

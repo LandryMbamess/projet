@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block headtitle %}
+    {% block title %}{% trans "Responses for page" %}{% endblock %}
+    - Example base comments
+
+{% endblock %}
+
+{% block main %}
+  <h1>Commentaires</h1>
+
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+{% endblock %}

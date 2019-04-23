@@ -18,7 +18,7 @@
                 <small>{{article.date}}</small>
             </h2>
             <p>{{article.contenu|truncatewords:60}}</p>
-            <a href="{% url 'blog:detailArticle' article.id %}" class="btn btn-default btn-lg">Lire l'article</a>
+            <a href="{{article.get_absolute_url}}" class="btn btn-default btn-lg">Lire l'article</a>
         </div>
         {% if forloop.counter|divisibleby:2 %}<h3 class="clearfix"></h3>{% endif %}
     {% endfor %}
