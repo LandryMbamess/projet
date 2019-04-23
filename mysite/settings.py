@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'fluent_comments',
+    'crispy_forms',
     'django_comments',
     'django.contrib.sites',
 ]

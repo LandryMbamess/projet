@@ -73,14 +73,15 @@ class editArticle(UpdateView):
 
 @login_required(login_url = 'blog:login')
 def newCom(request, pk):
-	forms = comForm(request.POST or None)
-	if forms.is_valid():
-		forms = forms.save(commit=False)
-		forms.auteur = request.user
-		forms.article = Article.objects.get(pk=pk)
-		forms.save()
+	form = comForm(request.POST or None)
+	article = Article.objects.get(pk=pk)
+	if form.is_valid():
+		form = form.save(commit=False)
+		form.auteur = request.user
+		form.article = Article.objects.get(pk=pk)
+		form.save()
 		return redirect('blog:detailArticle', pk)
-	return render(request, "blog/detail.html", locals())
+	return render(request, "blog/com.html", locals())
 
 #@login_required(login_url = 'blog:login')
 #def ajoutCat(request):
